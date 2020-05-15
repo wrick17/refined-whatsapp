@@ -6,6 +6,7 @@ import babel from '@rollup/plugin-babel';
 
 import { terser } from "rollup-plugin-terser";
 import { chromeExtension, simpleReloader } from 'rollup-plugin-chrome-extension';
+
 import tsconfig from './tsconfig.json';
 
 const prod = process.env.NODE_ENV === 'production';
@@ -42,6 +43,6 @@ export default {
       __DEBUG__: dev,
       __DEV__: dev,
       __PROD__: prod,
-    })
+    }),
   ].filter(Boolean),
 }

@@ -1,24 +1,5 @@
-const DEFAULT_OPTIONS = {
-  enabled: true,
-};
-
-type RefinedWhatsappOptions = typeof DEFAULT_OPTIONS;
-const OPTION_KEYS = Object.keys(DEFAULT_OPTIONS);
-
-const getStoredOptions = (): Promise<RefinedWhatsappOptions> => new Promise(resolve => {
-  // eslint-disable-next-line no-undef
-  chrome.storage.sync.get(OPTION_KEYS, (options: RefinedWhatsappOptions) => {
-    resolve({
-      ...DEFAULT_OPTIONS,
-      ...options,
-    })
-  });
-});
-
-const persistOptions = (options: RefinedWhatsappOptions): Promise<void> => new Promise(resolve => {
-  // eslint-disable-next-line no-undef
-  chrome.storage.sync.set(options, resolve);
-});
+import { getStoredOptions, persistOptions } from './utils';
+import type { RefinedWhatsappOptions } from './constants';
 
 const setupOptions = async () => {
   const form = document.forms[0];
