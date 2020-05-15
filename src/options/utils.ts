@@ -6,8 +6,12 @@ export const getStoredOptions = (): Promise<RefinedWhatsappOptions> =>
     // eslint-disable-next-line no-undef
     chrome.storage.sync.get(OPTION_KEYS, (options: RefinedWhatsappOptions) => {
       resolve({
-        ...DEFAULT_OPTIONS,
-        ...options,
+        hotkeys: DEFAULT_OPTIONS.hotkeys,
+        // hotkeys: {
+        //   /// todo: handle other keys??
+        //   ...DEFAULT_OPTIONS.hotkeys,
+        //   ...options.hotkeys,
+        // },
       });
     });
   });
